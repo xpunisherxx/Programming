@@ -1,0 +1,66 @@
+A function that’s part of a class is a method
+
+
+ The __init__() method at is a special method
+that Python runs automatically whenever we create a new instance based
+on the class.
+
+
+two leading underscores and two trailing underscores, a convention that helps prevent Python’s default method
+names from conflicting with your method names...If you use just one on each side, the
+method won’t be called automatically when you use your class, which can
+result in errors that are difficult to identify.
+
+
+
+The self parameter is required in the method definition, and it
+must come first before the other parameters. It must be included in the definition because when Python calls this method later (to create an instance
+of Dog), the method call will automatically pass the self argument. Every
+method call associated with an instance automatically passes self, which is
+a reference to the instance itself; it gives the individual instance access to
+the attributes and methods in the class. When we make an instance of Dog,
+Python will call the __init__() method from the Dog class. We’ll pass Dog()
+a name and an age as arguments; self is passed automatically, so we don’t
+need to pass it. Whenever we want to make an instance from the Dog class,
+we’ll provide values for only the last two parameters, name and age.
+
+
+
+Any variable
+prefixed with self is available to every method in the class, and we’ll also be
+able to access these variables through any instance created from the class.
+The line self.name = name takes the value associated with the parameter name
+and assigns it to the variable name, which is then attached to the instance
+being created. The same process happens with self.age = age. Variables that
+are accessible through instances like this are called attributes.
+
+
+
+🧠 Think like this:
+
+    self = current object (instance)
+
+    self.x = "store this on me (the object)"
+
+    Without self, you're just creating temporary local variables inside a method that vanish after the method ends.
+
+
+
+    class Dog:
+    def __init__(self, name):
+        name = name  # ❌ does nothing useful
+
+This does not assign name to the object. It creates a useless local variable name = name.
+
+
+
+The Dog class has two other methods defined: sit() and roll_over() y.
+Because these methods don’t need additional information to run, we just
+define them to have one parameter, self. The instances we create later
+will have access to these methods. In other words, they’ll be able to sit and
+roll over. For now, sit() and roll_over() don’t do much. They simply print
+a message saying the dog is sitting or rolling over. But the concept can be
+extended to realistic situations: if this class were part of an actual computer game, these methods would contain code to make an animated dog
+sit and roll over. If this class was written to control a robot, these methods
+would direct movements that cause a robotic dog to sit and roll over.
+
